@@ -74,4 +74,16 @@ function tonify(vowels, tone) {
   return [html, text];
 }
 
-export { parseEntry, getTones, tonify };
+function isChineseCharacter(c) {
+  return (
+    !isNaN(c) &&
+    (c === 0x25cb ||
+      (0x3400 <= c && c <= 0x9fff) ||
+      (0xf900 <= c && c <= 0xfaff) ||
+      (0xff21 <= c && c <= 0xff3a) ||
+      (0xff41 <= c && c <= 0xff5a) ||
+      (0xd800 <= c && c <= 0xdfff))
+  );
+}
+
+export { parseEntry, getTones, tonify, isChineseCharacter };
